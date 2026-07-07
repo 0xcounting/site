@@ -66,7 +66,7 @@
     margin: 0;
     font-size: 72px;
     font-weight: 400;
-    line-height: 1.15;
+    line-height: 1.2;
     letter-spacing: -0.02em;
     display: flex;
     align-items: flex-start;
@@ -74,7 +74,8 @@
   .flap {
     display: inline-block;
     overflow: hidden;
-    height: 1.15em;
+    height: calc(1.2em + 2px);
+    margin-top: -1px;
     border: 1px solid #d8d4cb;
     border-radius: 6px;
     background: #efede6;
@@ -89,8 +90,8 @@
   .flap.second > span { animation-delay: 0.14s; }
   .flap b {
     display: block;
-    height: 1.15em;
-    line-height: 1.15;
+    height: 1.2em;
+    line-height: 1.2;
     text-align: center;
     font-weight: 400;
   }
@@ -155,6 +156,13 @@
     text-decoration: underline;
     text-underline-offset: 3px;
   }
+  footer .x-link svg {
+    width: 12px;
+    height: 12px;
+    fill: currentColor;
+    vertical-align: -1px;
+    margin-right: 6px;
+  }
 
   [lang-de] { display: none; }
   html.de [lang-de] { display: block; }
@@ -201,18 +209,18 @@
     <div class="label">Impressum</div>
     <div class="grid">
       <div>
-        <div>0xcounting GmbH</div>
+        <div>0xcounting GmbH i.G.</div>
         <div>Grossbeerenstraße 78</div>
         <div>10963 Berlin</div>
       </div>
       <div>
-        <div>Geschäftsführer: [Name]</div>
+        <div>Geschäftsführerin: Afra Stöhr</div>
         <div>Amtsgericht Charlottenburg</div>
-        <div>HRB [—]</div>
+        <div>Handelsregistereintrag beantragt</div>
       </div>
       <div>
         <div><a href="mailto:info@0xcounting.com">info@0xcounting.com</a></div>
-        <div><a href="https://x.com/0xcounting" target="_blank" rel="noopener">X: @0xcounting</a></div>
+        <div><a class="x-link" href="https://x.com/0xcounting" target="_blank" rel="noopener" aria-label="0xcounting on X"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@0xcounting</a></div>
       </div>
     </div>
   </footer>
