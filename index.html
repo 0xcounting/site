@@ -203,7 +203,6 @@
   }
   footer .label {
     color: #1d1b17;
-    margin-bottom: 12px;
     letter-spacing: 0.08em;
     text-transform: uppercase;
     font-size: 11px;
@@ -226,6 +225,66 @@
     margin-right: 6px;
   }
 
+  footer .label-row {
+    display: flex;
+    margin-bottom: 12px;
+    gap: 16px;
+    align-items: baseline;
+  }
+  footer .label-row a {
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-size: 11px;
+  }
+
+  .privacy {
+    width: min(640px, calc(100% - 32px));
+    max-height: min(80vh, 720px);
+    padding: 0;
+    border: 1px solid #d8d4cb;
+    border-radius: 6px;
+    background: #f7f5f0;
+    color: #3a372f;
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 13px;
+    line-height: 1.7;
+  }
+  .privacy::backdrop { background: rgba(29, 27, 23, 0.4); }
+  html:has(.privacy[open]) { overflow: hidden; }
+  .privacy .bar {
+    position: sticky;
+    top: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 24px;
+    background: #f7f5f0;
+    border-bottom: 1px solid #d8d4cb;
+    color: #1d1b17;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-size: 11px;
+  }
+  .privacy .bar button {
+    border: 0;
+    background: none;
+    font: inherit;
+    font-size: 18px;
+    line-height: 1;
+    color: #6b675f;
+    cursor: pointer;
+    padding: 4px;
+  }
+  .privacy .body { padding: 4px 24px 24px; }
+  .privacy h2 {
+    margin: 20px 0 4px;
+    font-size: 13px;
+    font-weight: 500;
+    color: #1d1b17;
+  }
+  .privacy p { margin: 0 0 8px; }
+  .privacy a { color: #3a372f; text-underline-offset: 3px; }
+
   [lang-de] { display: none; }
   html.de [lang-de] { display: block; }
   html.de [lang-en] { display: none; }
@@ -240,7 +299,10 @@
     .contact p { font-size: 15px; }
     .contact a { font-size: 15px; margin-top: 10px; }
     footer { padding: 20px 24px 24px; font-size: 11px; }
-    footer .label { font-size: 10px; margin-bottom: 10px; }
+    footer .label, footer .label-row a { font-size: 10px; }
+    footer .label-row { margin-bottom: 10px; }
+    .privacy { font-size: 12px; }
+    .privacy .bar, .privacy .body { padding-left: 16px; padding-right: 16px; }
     footer .grid { grid-template-columns: 1fr; gap: 8px; }
   }
 </style>
@@ -268,7 +330,11 @@
   </main>
 
   <footer>
-    <div class="label">Impressum</div>
+    <div class="label-row">
+      <div class="label">Impressum</div>
+      <a href="#privacy" lang-en>Privacy</a>
+      <a href="#privacy" lang-de>Datenschutz</a>
+    </div>
     <div class="grid">
       <div>
         <div>0xcounting GmbH</div>
@@ -290,6 +356,67 @@
   </footer>
 </div>
 
+<dialog class="privacy" id="privacy" aria-labelledby="privacy-title">
+  <div class="bar">
+    <span id="privacy-title"><span lang-en>Privacy policy</span><span lang-de>Datenschutzerklärung</span></span>
+    <button type="button" onclick="closePrivacy()" aria-label="Close">×</button>
+  </div>
+  <div class="body" lang-en>
+    <h2>Controller</h2>
+    <p>0xcounting GmbH, Grossbeerenstraße 78, 10963 Berlin, Germany. Managing director: Afra Stöhr. <a href="mailto:info@0xcounting.com">info@0xcounting.com</a></p>
+
+    <h2>Hosting</h2>
+    <p>This website is served by Cloudflare, Inc., 101 Townsend St, San Francisco, CA 94107, USA. To deliver the site and protect it against attacks, Cloudflare processes technical request data such as your IP address, the time of the request, the page requested, the referring page and your browser's user agent. Legal basis: Art. 6(1)(f) GDPR (secure and reliable operation of the website). We have a data processing agreement with Cloudflare. Cloudflare is certified under the EU-U.S. Data Privacy Framework.</p>
+
+    <h2>Analytics</h2>
+    <p>We use Cloudflare Web Analytics to see how many people visit this site. It does not set cookies, does not store anything on your device and does not create profiles or track you across sites or visits. We only see aggregated figures such as page views, referring sites, countries, browsers and device types. Legal basis: Art. 6(1)(f) GDPR (understanding the reach of our website).</p>
+
+    <h2>Language setting</h2>
+    <p>If you switch the language, your choice is saved in your browser's local storage so the page opens in that language next time. It never leaves your device. This is strictly necessary for a function you requested (§ 25(2) no. 2 TDDDG).</p>
+
+    <h2>Fonts</h2>
+    <p>All fonts are hosted on our own server. No connection to third-party font services is made.</p>
+
+    <h2>Email</h2>
+    <p>If you email us, we process your address and message to respond. Legal basis: Art. 6(1)(b) GDPR where your inquiry relates to a contract, otherwise Art. 6(1)(f) GDPR. We delete the data once it is no longer needed, unless statutory retention periods apply.</p>
+
+    <h2>Links to other sites</h2>
+    <p>This page links to our profile on X. No data is sent to X unless you click the link, after which X's privacy policy applies.</p>
+
+    <h2>Your rights</h2>
+    <p>You have the right to access, rectification, erasure, restriction of processing and data portability (Art. 15 to 20 GDPR), and the right to object to processing based on Art. 6(1)(f) GDPR (Art. 21 GDPR). To exercise them, email us. You may also lodge a complaint with a supervisory authority, for example the Berliner Beauftragte für Datenschutz und Informationsfreiheit.</p>
+
+    <p style="margin-top: 20px">As of September 2026</p>
+  </div>
+  <div class="body" lang-de>
+    <h2>Verantwortlicher</h2>
+    <p>0xcounting GmbH, Grossbeerenstraße 78, 10963 Berlin. Geschäftsführerin: Afra Stöhr. <a href="mailto:info@0xcounting.com">info@0xcounting.com</a></p>
+
+    <h2>Hosting</h2>
+    <p>Diese Website wird über Cloudflare, Inc., 101 Townsend St, San Francisco, CA 94107, USA ausgeliefert. Um die Seite bereitzustellen und vor Angriffen zu schützen, verarbeitet Cloudflare technische Anfragedaten wie Ihre IP-Adresse, den Zeitpunkt des Abrufs, die aufgerufene Seite, die verweisende Seite und den User-Agent Ihres Browsers. Rechtsgrundlage: Art. 6 Abs. 1 lit. f DSGVO (sicherer und zuverlässiger Betrieb der Website). Mit Cloudflare besteht ein Vertrag zur Auftragsverarbeitung. Cloudflare ist unter dem EU-U.S. Data Privacy Framework zertifiziert.</p>
+
+    <h2>Reichweitenmessung</h2>
+    <p>Wir nutzen Cloudflare Web Analytics, um zu sehen, wie viele Menschen diese Seite besuchen. Dabei werden keine Cookies gesetzt, keine Informationen auf Ihrem Gerät gespeichert und keine Profile erstellt oder Sie über Websites oder Besuche hinweg verfolgt. Wir sehen nur zusammengefasste Werte wie Seitenaufrufe, verweisende Seiten, Länder, Browser und Gerätetypen. Rechtsgrundlage: Art. 6 Abs. 1 lit. f DSGVO (Kenntnis der Reichweite unserer Website).</p>
+
+    <h2>Spracheinstellung</h2>
+    <p>Wenn Sie die Sprache wechseln, wird Ihre Wahl im lokalen Speicher Ihres Browsers abgelegt, damit die Seite beim nächsten Besuch in dieser Sprache öffnet. Sie verlässt Ihr Gerät nicht. Dies ist für eine von Ihnen gewünschte Funktion unbedingt erforderlich (§ 25 Abs. 2 Nr. 2 TDDDG).</p>
+
+    <h2>Schriftarten</h2>
+    <p>Alle Schriftarten liegen auf unserem eigenen Server. Es wird keine Verbindung zu externen Schriftanbietern aufgebaut.</p>
+
+    <h2>E-Mail</h2>
+    <p>Wenn Sie uns eine E-Mail schreiben, verarbeiten wir Ihre Adresse und Nachricht, um zu antworten. Rechtsgrundlage: Art. 6 Abs. 1 lit. b DSGVO, sofern Ihre Anfrage mit einem Vertrag zusammenhängt, ansonsten Art. 6 Abs. 1 lit. f DSGVO. Wir löschen die Daten, sobald sie nicht mehr benötigt werden, sofern keine gesetzlichen Aufbewahrungspflichten bestehen.</p>
+
+    <h2>Links zu anderen Seiten</h2>
+    <p>Diese Seite verlinkt auf unser Profil bei X. Daten werden erst an X übermittelt, wenn Sie den Link anklicken; danach gilt die Datenschutzerklärung von X.</p>
+
+    <h2>Ihre Rechte</h2>
+    <p>Sie haben das Recht auf Auskunft, Berichtigung, Löschung, Einschränkung der Verarbeitung und Datenübertragbarkeit (Art. 15 bis 20 DSGVO) sowie das Recht, einer Verarbeitung auf Grundlage von Art. 6 Abs. 1 lit. f DSGVO zu widersprechen (Art. 21 DSGVO). Schreiben Sie uns dazu eine E-Mail. Außerdem können Sie sich bei einer Aufsichtsbehörde beschweren, zum Beispiel bei der Berliner Beauftragten für Datenschutz und Informationsfreiheit.</p>
+
+    <p style="margin-top: 20px">Stand: September 2026</p>
+  </div>
+</dialog>
+
 <script>
   function setLang(l) {
     document.documentElement.classList.toggle('de', l === 'de');
@@ -304,6 +431,31 @@
     if (!saved && navigator.language && navigator.language.slice(0, 2) === 'de') saved = 'de';
     if (saved === 'de') setLang('de');
   })();
+
+  var privacy = document.getElementById('privacy');
+  function openPrivacy() {
+    if (!privacy.open) privacy.showModal();
+    privacy.scrollTop = 0;
+  }
+  function closePrivacy() {
+    privacy.close();
+  }
+  privacy.addEventListener('close', function () {
+    if (location.hash === '#privacy') history.replaceState(null, '', location.pathname + location.search);
+  });
+  privacy.addEventListener('click', function (e) {
+    if (e.target === privacy) closePrivacy();
+  });
+  document.querySelectorAll('a[href="#privacy"]').forEach(function (a) {
+    a.addEventListener('click', function (e) {
+      e.preventDefault();
+      openPrivacy();
+    });
+  });
+  window.addEventListener('hashchange', function () {
+    if (location.hash === '#privacy') openPrivacy();
+  });
+  if (location.hash === '#privacy') openPrivacy();
 </script>
 </body>
 </html>
